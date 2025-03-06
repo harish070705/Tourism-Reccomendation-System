@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #a09e9c;
+            max-width: 1920px;
+            margin: 0 auto;
+            background-color: #f6f8fa;
+            height: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a3f;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+        }
+
+        p {
+            color: #767f86;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        a {
+            color: #ff545a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 14px;
+            color: #343a3f;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #ff545a;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4347;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label for="contact_number">Contact Number:</label>
+            <input type="text" id="contact_number" name="contact_number" required>
+        
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+        
+            <button type="submit">Register</button>
+        </form>        
+        <div class="footer">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login Here</a></p>
+        </div>
+    </div>
+</body>
+</html>

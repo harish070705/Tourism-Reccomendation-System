@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- meta data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!--font-family-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <!--linear icon css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/linearicons.css') }}">
+
+    <!--animate.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+
+    <!--flaticon.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+
+    <!--slick.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick-theme.css') }}">
+
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootsnav.css') }}">
+
+    <!--style.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!--responsive.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- Search Section -->
+    <section id="home" style="background: #f8fafb;">
+        <div class="container">
+            <div class="welcome-hero-serch-box">
+                <div class="welcome-hero-form">
+                    <div class="single-welcome-hero-form">
+                        <h3>location : </h3>
+                        <form action="/search" method="get">
+                            <input type="text" name="query" placeholder="Ex: London, New York, Rome"
+                                value="{{ query or '' }}" required>
+                            <div class="welcome-hero-form-icon">
+                                <i class="flaticon-gps-fixed-indicator"></i>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="welcome-hero-serch">
+                    <button class="welcome-hero-btn" type="submit">
+                        search <i data-feather="search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Display Hotels -->
+    {% if hotels %}
+    <section id="hotels" class="explore">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hotels</h2>
+            </div><!--/.section-header-->
+            <div class="explore-content">
+                <div class="row">
+                    {% for hotel in hotels %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-explore-item">
+                            <div class="single-explore-img">
+                                <img src="{{ hotel.image_url }}" alt="Hotel Image">
+                                <div class="single-explore-img-info">
+                                    <button onclick="window.location.href='#'">{{ hotel.rating }} stars</button>
+                                </div>
+                            </div>
+                            <div class="single-explore-txt bg-theme-{{ loop.index }}">
+                                <h2><a href="#">{{ hotel.name }}</a></h2>
+                                <p class="explore-rating-price">
+                                    <span class="explore-price">{{ hotel.price }} USD</span>
+                                </p>
+                                <div class="explore-person">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p>{{ hotel.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div><!--/.container-->
+    </section><!--/.explore-->
+    {% endif %}
+
+
+</body>
+
+</html>
